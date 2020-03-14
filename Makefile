@@ -5,7 +5,7 @@ ARCH = $(shell arch)
 ifeq ($(ARCH),x86_64)
 NBITS	= 64
 else
-ifeq ($(ARCH),arm)
+ifeq ($(ARCH),armv7l)
 NBITS	= 32
 else
 NBITS	= 64
@@ -40,7 +40,7 @@ ifeq ($(ARCH),x86_64)
 syscall_table.h: gen_syscall_table_x64.py
 	cat /usr/include/x86_64-linux-gnu/asm/unistd_64.h | ./gen_syscall_table_x64.py > syscall_table.h
 else
-ifeq ($(ARCH),arm)
+ifeq ($(ARCH),armv7l)
 syscall_table.h: gen_syscall_table_arm.py
 	cat /usr/include/arm-linux-gnueabihf/asm/unistd.h | ./gen_syscall_table_arm.py > syscall_table.h
 else
