@@ -25,9 +25,15 @@ openat(4294967196, "/etc/ld.so.cache", 524288, 0x00000000) = 3 (0x00000003)
 ...
 
 $ ./sandbox touch newfile
-Child process 6836 attempted to open file "newfile" with a write-access flag. I will kill the process.
-Killed.
-$
+Child process 4008 attempted to open file "newfile" with a write-access flag.
+Security violation in process 4008. I will kill that process... Killed.
+$ /sandbox ping www.google.co.jp
+Child process 4012 attempted network communication.
+Security violation in process 4012. I will kill that process... Killed.
+$ ./sandbox wget https://www.google.co.jp
+--2020-03-21 XX:XX:XX--  https://www.google.co.jp/
+Resolving www.google.co.jp (www.google.co.jp)... Child process 4018 attempted network communication.
+Security violation in process 4018. I will kill that process... Killed.
 ````
 
 動作確認環境
