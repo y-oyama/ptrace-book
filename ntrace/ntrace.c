@@ -448,7 +448,7 @@ static void parent_main(void)
         if ((0 < signum) && (signum < NSIG)) {
           fprintf(stderr, "PID %d: Received a signal (number %d: %s).\n", child_pid, signum, my_strsignal(signum));
         } else {
-          fprintf(stderr, "waitid returned.\n");
+          //fprintf(stderr, "waitid returned.\n");
         }
         /* Continue the child. */
         if (ptrace(PTRACE_SYSCALL, child_pid, 0, signum) < 0) {
